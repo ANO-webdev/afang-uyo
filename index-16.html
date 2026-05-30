@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Foodlovers | Takoradi Mall</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ─── TOKENS ─── */
+:root {
+  --red:#D72638; --red-dark:#B51E2C;
+  --amber:#F4A916; --amber-dark:#D4900E;
+  --dark:#0F0B09; --card:#1A1410; --card2:#221C16;
+  --border:rgba(244,169,22,.16); --border2:rgba(255,255,255,.07);
+  --text:#F5ECD7; --muted:#9E8A74; --muted2:#6B5A4A;
+  --white:#fff; --green:#22C55E;
+  --nav:68px;
+  --radius:14px; --radius-sm:9px; --radius-lg:20px;
+  --shadow:0 8px 32px rgba(0,0,0,.45);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden}
+img{display:block;max-width:100%}
+button{font-family:'DM Sans',sans-serif}
+a{color:inherit;text-decoration:none}
+
+/* ─── TYPOGRAPHY ─── */
+.serif{font-family:'Playfair Display',serif}
+
+/* ─── PAGE TRANSITIONS ─── */
+.page{display:none;animation:fadeIn .3s ease}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:var(--nav);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5vw;
+  background:rgba(15,11,9,.95);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:var(--amber);cursor:pointer;user-select:none}
+.nav-logo span{color:var(--red)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--muted);font-size:.88rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;transition:color .2s;cursor:pointer}
+.nav-links a:hover,.nav-links a.active{color:var(--amber)}
+.nav-right{display:flex;align-items:center;gap:.8rem}
+.nav-wa{
+  background:var(--green);color:var(--white);border:none;cursor:pointer;
+  padding:.45rem 1rem;border-radius:999px;font-size:.8rem;font-weight:700;
+  display:flex;align-items:center;gap:.35rem;transition:opacity .2s;
+  white-space:nowrap;
+}
+.nav-wa:hover{opacity:.88}
+.cart-btn{
+  background:var(--red);color:var(--white);border:none;cursor:pointer;
+  padding:.45rem 1.1rem;border-radius:999px;font-size:.88rem;font-weight:600;
+  display:flex;align-items:center;gap:.5rem;transition:background .2s,transform .15s;
+  white-space:nowrap;
+}
+.cart-btn:hover{background:var(--red-dark);transform:scale(1.04)}
+.cart-count{
+  background:var(--amber);color:var(--dark);
+  border-radius:999px;font-size:.7rem;font-weight:800;
+  padding:.05rem .42rem;min-width:19px;text-align:center;
+  transition:transform .25s cubic-bezier(.34,1.56,.64,1);
+}
+.cart-count.bump{transform:scale(1.5)}
+
+/* hamburger */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .25s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{
+  display:none;position:fixed;top:var(--nav);left:0;right:0;z-index:190;
+  background:rgba(15,11,9,.98);backdrop-filter:blur(14px);
+  padding:1.5rem 5vw 2rem;border-bottom:1px solid var(--border);
+  flex-direction:column;gap:0;
+}
+.mobile-menu.open{display:flex}
+.mobile-menu a{
+  display:block;padding:1rem 0;
+  color:var(--text);font-size:1.1rem;font-weight:500;
+  border-bottom:1px solid var(--border2);cursor:pointer;
+  transition:color .2s;
+}
+.mobile-menu a:last-child{border-bottom:none}
+.mobile-menu a:hover{color:var(--amber)}
+.mobile-menu-wa{
+  margin-top:1.2rem;
+  display:flex;align-items:center;justify-content:center;gap:.5rem;
+  background:var(--green);color:var(--white);
+  border:none;cursor:pointer;border-radius:999px;
+  padding:.85rem;font-size:1rem;font-weight:700;
+  width:100%;
+}
+
+/* ─── FLOATING CART BAR ─── */
+.float-cart{
+  position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(100px);
+  z-index:180;
+  background:var(--red);color:var(--white);
+  border-radius:999px;padding:.85rem 1.8rem;
+  display:flex;align-items:center;gap:1rem;
+  box-shadow:0 8px 30px rgba(215,38,56,.5);
+  cursor:pointer;border:none;font-family:'DM Sans',sans-serif;
+  transition:transform .4s cubic-bezier(.34,1.56,.64,1),opacity .3s;
+  white-space:nowrap;min-width:240px;justify-content:space-between;
+  opacity:0;pointer-events:none;
+}
+.float-cart.visible{transform:translateX(-50%) translateY(0);opacity:1;pointer-events:all}
+.float-cart-left{display:flex;align-items:center;gap:.6rem;font-weight:600;font-size:.95rem}
+.float-cart-count{background:rgba(255,255,255,.25);border-radius:999px;padding:.15rem .6rem;font-size:.8rem;font-weight:700}
+.float-cart-price{font-size:1rem;font-weight:800;color:var(--amber)}
+
+/* ─── SHARED UTILS ─── */
+.section{padding:4rem 5vw}
+.section-label{font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--red);margin-bottom:.5rem}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3.5vw,2.5rem);font-weight:900;color:var(--white);margin-bottom:2.5rem;line-height:1.15}
+
+.btn-primary{
+  background:var(--red);color:var(--white);border:none;cursor:pointer;
+  padding:.85rem 2.2rem;border-radius:999px;font-weight:700;font-size:1rem;
+  transition:background .2s,transform .15s;display:inline-flex;align-items:center;gap:.5rem;
+}
+.btn-primary:hover{background:var(--red-dark);transform:translateY(-2px)}
+.btn-outline{
+  background:transparent;color:var(--amber);border:1.5px solid var(--amber);cursor:pointer;
+  padding:.85rem 2.2rem;border-radius:999px;font-weight:700;font-size:1rem;
+  transition:background .2s,color .2s,transform .15s;display:inline-flex;align-items:center;gap:.5rem;
+}
+.btn-outline:hover{background:var(--amber);color:var(--dark);transform:translateY(-2px)}
+.btn-wa{
+  background:var(--green);color:var(--white);border:none;cursor:pointer;
+  padding:.85rem 2.2rem;border-radius:999px;font-weight:700;font-size:1rem;
+  transition:opacity .2s,transform .15s;display:inline-flex;align-items:center;gap:.5rem;
+}
+.btn-wa:hover{opacity:.88;transform:translateY(-2px)}
+
+/* ─── HOME ─── */
+#home-hero{
+  min-height:100vh;padding-top:var(--nav);
+  display:flex;flex-direction:column;
+  background:
+    linear-gradient(180deg,transparent 40%,var(--dark) 100%),
+    linear-gradient(160deg,rgba(215,38,56,.2) 0%,transparent 55%),
+    url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1600&q=80') center/cover no-repeat;
+}
+.hero-inner{
+  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:3rem 5vw;max-width:800px;margin:0 auto;width:100%;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.4rem;
+  background:rgba(244,169,22,.1);border:1px solid rgba(244,169,22,.35);
+  color:var(--amber);font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:.35rem 1rem;border-radius:999px;margin-bottom:1.4rem;
+}
+.hero-inner h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.6rem,8vw,5.5rem);font-weight:900;line-height:1.05;
+  color:var(--white);margin-bottom:1.1rem;
+}
+.hero-inner h1 em{color:var(--amber);font-style:italic}
+.hero-sub{font-size:clamp(.95rem,2vw,1.1rem);color:var(--muted);line-height:1.75;max-width:480px;margin:0 auto 2.5rem}
+.hero-ctas{display:flex;gap:.9rem;flex-wrap:wrap;justify-content:center}
+
+.info-strip{
+  display:flex;gap:0;flex-wrap:nowrap;overflow-x:auto;
+  background:var(--card);border-top:1px solid var(--border);
+  scrollbar-width:none;
+}
+.info-strip::-webkit-scrollbar{display:none}
+.info-item{
+  display:flex;align-items:center;gap:.8rem;
+  padding:1.6rem 2rem;flex-shrink:0;
+  border-right:1px solid var(--border);
+}
+.info-item:last-child{border-right:none}
+.info-icon{
+  width:40px;height:40px;border-radius:50%;flex-shrink:0;
+  background:rgba(244,169,22,.1);border:1px solid rgba(244,169,22,.25);
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem;
+}
+.info-item strong{font-size:.95rem;color:var(--text);display:block;white-space:nowrap}
+.info-item small{font-size:.78rem;color:var(--muted)}
+
+/* featured grid */
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1.2rem}
+.feat-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);
+  overflow:hidden;transition:transform .25s,border-color .25s;
+}
+.feat-card:hover{transform:translateY(-4px);border-color:rgba(244,169,22,.4)}
+.feat-img{width:100%;height:170px;background-size:cover;background-position:center;position:relative;flex-shrink:0}
+.feat-tag{
+  position:absolute;top:10px;left:10px;
+  background:var(--red);color:var(--white);
+  font-size:.68rem;font-weight:700;padding:.22rem .65rem;border-radius:999px;
+}
+.feat-body{padding:1rem 1.1rem 1.2rem}
+.feat-body h3{font-size:.95rem;font-weight:600;color:var(--white);margin-bottom:.25rem}
+.feat-body p{font-size:.78rem;color:var(--muted);line-height:1.5;margin-bottom:.8rem}
+.feat-footer{display:flex;align-items:center;justify-content:space-between}
+.feat-price{font-size:1rem;font-weight:800;color:var(--amber)}
+.add-btn{
+  background:var(--red);color:var(--white);border:none;cursor:pointer;
+  border-radius:999px;width:34px;height:34px;font-size:1.2rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s,transform .15s;
+  flex-shrink:0;
+}
+.add-btn:hover{background:var(--red-dark);transform:scale(1.1)}
+.add-btn.added{background:var(--green);transform:scale(1.15)}
+
+/* promo banner */
+.promo-banner{
+  margin:0 5vw 4rem;
+  background:linear-gradient(135deg,rgba(215,38,56,.2) 0%,rgba(244,169,22,.1) 100%);
+  border:1px solid rgba(244,169,22,.25);border-radius:var(--radius-lg);
+  padding:3rem 2.5rem;text-align:center;
+}
+.promo-banner h2{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:900;color:var(--white);margin:.5rem 0 .8rem}
+.promo-banner p{color:var(--muted);max-width:440px;margin:0 auto 1.8rem;line-height:1.7}
+
+/* ─── MENU PAGE ─── */
+#menu{padding-top:var(--nav)}
+.menu-hero{text-align:center;padding:3rem 5vw 1.5rem}
+.menu-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:900;color:var(--white)}
+.menu-hero p{color:var(--muted);margin-top:.6rem;font-size:.95rem}
+
+.tabs{
+  display:flex;gap:.5rem;overflow-x:auto;scrollbar-width:none;
+  padding:1.2rem 5vw;
+  border-bottom:1px solid var(--border);
+  position:sticky;top:var(--nav);background:rgba(15,11,9,.97);z-index:50;
+  backdrop-filter:blur(10px);
+}
+.tabs::-webkit-scrollbar{display:none}
+.tab{
+  background:transparent;color:var(--muted);
+  border:1px solid var(--border2);cursor:pointer;
+  padding:.48rem 1.15rem;border-radius:999px;
+  font-size:.83rem;font-weight:500;white-space:nowrap;
+  transition:all .18s;flex-shrink:0;
+}
+.tab:hover{border-color:rgba(244,169,22,.4);color:var(--amber)}
+.tab.active{background:var(--red);border-color:var(--red);color:var(--white);font-weight:600}
+
+.menu-section{padding:2rem 5vw}
+.cat-title{
+  font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--amber);
+  margin-bottom:1.2rem;display:flex;align-items:center;gap:.6rem;
+}
+.cat-title::after{content:'';flex:1;height:1px;background:var(--border);margin-left:.5rem}
+
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1rem}
+.menu-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  display:flex;align-items:center;gap:.9rem;padding:.9rem;
+  transition:border-color .2s,background .2s;cursor:default;
+}
+.menu-card:hover{border-color:rgba(244,169,22,.3);background:var(--card2)}
+.menu-thumb{
+  width:70px;height:70px;border-radius:10px;flex-shrink:0;
+  background-size:cover;background-position:center;
+}
+.menu-info{flex:1;min-width:0}
+.menu-info h4{font-size:.9rem;font-weight:600;color:var(--white);margin-bottom:.18rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.menu-info p{font-size:.75rem;color:var(--muted);line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.menu-right{display:flex;flex-direction:column;align-items:flex-end;gap:.55rem;flex-shrink:0}
+.menu-price{font-size:.98rem;font-weight:800;color:var(--amber);white-space:nowrap}
+.menu-add-btn{
+  background:var(--red);color:var(--white);border:none;cursor:pointer;
+  border-radius:8px;padding:.32rem .85rem;
+  font-size:.78rem;font-weight:600;white-space:nowrap;
+  transition:background .2s,transform .15s;
+}
+.menu-add-btn:hover{background:var(--red-dark)}
+.menu-add-btn.added{background:var(--green)}
+
+/* ─── ORDER PAGE ─── */
+#order{padding-top:var(--nav)}
+.order-layout{
+  display:grid;grid-template-columns:1fr 360px;gap:2rem;
+  padding:2.5rem 5vw 5rem;align-items:start;
+}
+.order-header{margin-bottom:1.5rem}
+.order-header h1{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--white);margin-bottom:.3rem}
+.order-header p{color:var(--muted);font-size:.9rem}
+.browse-link{
+  display:inline-flex;align-items:center;gap:.4rem;
+  margin-bottom:1.8rem;color:var(--amber);font-size:.88rem;font-weight:600;
+  cursor:pointer;transition:opacity .2s;
+}
+.browse-link:hover{opacity:.75}
+
+/* quick picks */
+.quick-label{font-size:.72rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:.9rem}
+.quick-scroll{display:flex;gap:.8rem;overflow-x:auto;scrollbar-width:none;padding-bottom:.5rem;margin-bottom:2rem}
+.quick-scroll::-webkit-scrollbar{display:none}
+.quick-chip{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  display:flex;align-items:center;gap:.7rem;padding:.7rem .9rem;
+  cursor:pointer;flex-shrink:0;min-width:160px;
+  transition:border-color .2s,background .2s;
+}
+.quick-chip:hover{border-color:rgba(244,169,22,.4);background:var(--card2)}
+.quick-chip-img{width:44px;height:44px;border-radius:8px;background-size:cover;background-position:center;flex-shrink:0}
+.quick-chip-info h5{font-size:.82rem;font-weight:600;color:var(--white)}
+.quick-chip-info span{font-size:.78rem;color:var(--amber);font-weight:700}
+.quick-chip-add{
+  margin-left:auto;background:var(--red);color:var(--white);
+  border:none;cursor:pointer;border-radius:6px;
+  width:26px;height:26px;font-size:1rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .15s;flex-shrink:0;
+}
+.quick-chip-add:hover{background:var(--red-dark)}
+.quick-chip-add.added{background:var(--green)}
+
+/* order form */
+.order-form-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.8rem}
+.order-form-card h3{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--white);margin-bottom:1.4rem}
+.f-row{margin-bottom:1.1rem;position:relative}
+.f-row label{font-size:.75rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;display:block;margin-bottom:.4rem}
+.f-row input,.f-row textarea,.f-row select{
+  width:100%;background:rgba(255,255,255,.04);border:1.5px solid var(--border);
+  color:var(--text);border-radius:10px;padding:.72rem 1rem;
+  font-family:'DM Sans',sans-serif;font-size:.95rem;outline:none;transition:border-color .2s;
+  appearance:none;-webkit-appearance:none;
+}
+.f-row input:focus,.f-row textarea:focus,.f-row select:focus{border-color:var(--amber)}
+.f-row.error input,.f-row.error select,.f-row.error textarea{border-color:var(--red)}
+.f-error-msg{font-size:.75rem;color:var(--red);margin-top:.3rem;display:none}
+.f-row.error .f-error-msg{display:block}
+.f-row textarea{resize:vertical;min-height:75px}
+.f-row select option{background:#1A1410}
+.f-row.hidden{display:none}
+
+.order-btns{display:flex;flex-direction:column;gap:.8rem;margin-top:1.5rem}
+.order-btns .btn-wa{width:100%;justify-content:center;font-size:1rem;padding:.95rem}
+.order-btns .btn-primary{width:100%;justify-content:center;font-size:.9rem;padding:.8rem;background:transparent;border:1.5px solid var(--border2);color:var(--muted)}
+.order-btns .btn-primary:hover{background:rgba(255,255,255,.06);color:var(--text);border-color:var(--border);transform:none}
+
+/* cart panel */
+.cart-panel{
+  position:sticky;top:calc(var(--nav) + 1.2rem);
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.6rem;
+}
+.cart-panel-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.2rem}
+.cart-panel-head h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--white)}
+.cart-panel-head span{font-size:.8rem;color:var(--muted)}
+.cart-empty-state{text-align:center;padding:2rem 0}
+.cart-empty-state .empty-icon{font-size:2.5rem;margin-bottom:.6rem}
+.cart-empty-state p{color:var(--muted);font-size:.88rem;line-height:1.5}
+.cart-empty-state a{color:var(--amber);cursor:pointer;font-weight:600}
+.cart-line{display:flex;align-items:center;gap:.7rem;padding:.65rem 0;border-bottom:1px solid var(--border)}
+.cart-line:last-child{border-bottom:none}
+.cart-line-emoji{font-size:1.3rem;flex-shrink:0}
+.cart-line-info{flex:1;min-width:0}
+.cart-line-info h5{font-size:.85rem;font-weight:600;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cart-line-info small{font-size:.73rem;color:var(--muted)}
+.qty-ctrl{display:flex;align-items:center;gap:.3rem;flex-shrink:0}
+.qty-btn{
+  background:rgba(255,255,255,.06);border:1px solid var(--border2);color:var(--text);
+  cursor:pointer;border-radius:6px;width:24px;height:24px;
+  font-size:.95rem;font-weight:700;display:flex;align-items:center;justify-content:center;
+  transition:background .15s;
+}
+.qty-btn:hover{background:rgba(255,255,255,.14)}
+.qty-num{font-size:.85rem;font-weight:600;color:var(--white);min-width:16px;text-align:center}
+.line-price{font-size:.88rem;font-weight:700;color:var(--amber);flex-shrink:0;min-width:52px;text-align:right}
+.cart-totals{margin-top:1rem;padding-top:.9rem;border-top:1px solid var(--border)}
+.total-row{display:flex;justify-content:space-between;font-size:.85rem;color:var(--muted);margin-bottom:.4rem}
+.total-row.grand{color:var(--white);font-size:1rem;font-weight:700;margin-top:.6rem;padding-top:.6rem;border-top:1px solid var(--border)}
+.total-row.grand span:last-child{color:var(--amber);font-size:1.1rem}
+.clear-btn{
+  width:100%;margin-top:.9rem;background:transparent;color:var(--muted2);
+  border:1px solid var(--border2);cursor:pointer;border-radius:9px;
+  padding:.55rem;font-size:.8rem;transition:border-color .2s,color .2s;
+}
+.clear-btn:hover{border-color:rgba(215,38,56,.5);color:var(--red)}
+
+/* ─── FOOTER ─── */
+footer{background:var(--card);border-top:1px solid var(--border);padding:3.5rem 5vw 2rem}
+.footer-inner{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;margin-bottom:2.5rem}
+.foot-logo{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--amber);margin-bottom:.5rem}
+.foot-logo span{color:var(--red)}
+.foot-tagline{font-size:.82rem;color:var(--muted);line-height:1.6;max-width:220px}
+.foot-col h4{font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.9rem}
+.foot-col p,.foot-col a{font-size:.88rem;color:var(--text);line-height:2;display:block}
+.foot-col a:hover{color:var(--amber)}
+.foot-socials{display:flex;gap:.6rem;margin-top:.5rem;flex-wrap:wrap}
+.foot-socials a{
+  background:rgba(255,255,255,.05);border:1px solid var(--border);
+  color:var(--muted);border-radius:8px;padding:.38rem .85rem;font-size:.78rem;
+  transition:border-color .2s,color .2s;
+}
+.foot-socials a:hover{border-color:var(--amber);color:var(--amber)}
+.foot-copy{font-size:.73rem;color:var(--muted2);text-align:center;padding-top:1.5rem;border-top:1px solid var(--border)}
+
+/* ─── TOAST ─── */
+#toast{
+  position:fixed;bottom:6rem;left:50%;transform:translateX(-50%) translateY(20px);
+  background:var(--card2);border:1px solid var(--amber);
+  color:var(--text);padding:.7rem 1.5rem;border-radius:999px;
+  font-size:.88rem;font-weight:500;z-index:999;
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1),opacity .3s;
+  pointer-events:none;white-space:nowrap;opacity:0;
+}
+#toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+/* ─── MODAL ─── */
+.modal-overlay{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.8);z-index:300;
+  align-items:center;justify-content:center;padding:1rem;
+}
+.modal-overlay.open{display:flex}
+.modal{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius-lg);padding:2.5rem 2rem;
+  max-width:440px;width:100%;text-align:center;
+  animation:fadeIn .3s ease;
+}
+.modal .modal-icon{font-size:3rem;margin-bottom:1rem}
+.modal h2{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:var(--white);margin-bottom:.7rem}
+.modal p{color:var(--muted);font-size:.9rem;margin-bottom:1.8rem;line-height:1.7}
+.modal-wa{
+  width:100%;background:var(--green);color:var(--white);
+  border:none;cursor:pointer;padding:1rem;border-radius:12px;
+  font-family:'DM Sans',sans-serif;font-weight:700;font-size:1rem;
+  display:flex;align-items:center;justify-content:center;gap:.5rem;
+  margin-bottom:.7rem;transition:opacity .2s;
+}
+.modal-wa:hover{opacity:.88}
+.modal-close{
+  width:100%;background:transparent;color:var(--muted);
+  border:1px solid var(--border2);cursor:pointer;padding:.8rem;border-radius:12px;
+  font-family:'DM Sans',sans-serif;font-size:.88rem;transition:border-color .2s,color .2s;
+}
+.modal-close:hover{border-color:var(--border);color:var(--text)}
+.order-ref{
+  display:inline-block;background:rgba(244,169,22,.12);border:1px solid rgba(244,169,22,.3);
+  color:var(--amber);border-radius:8px;padding:.4rem 1rem;font-size:.88rem;font-weight:700;
+  margin-bottom:1.2rem;letter-spacing:.05em;
+}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:960px){
+  .order-layout{grid-template-columns:1fr}
+  .cart-panel{position:static;margin-bottom:2rem;order:-1}
+  .footer-inner{grid-template-columns:1fr 1fr}
+}
+@media(max-width:680px){
+  .nav-links{display:none}
+  .nav-wa{display:none}
+  .hamburger{display:flex}
+  .feat-grid{grid-template-columns:1fr 1fr}
+  .menu-grid{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr}
+  .info-item{padding:1.4rem 1.2rem}
+  .order-layout{padding:2rem 4vw 5rem}
+  .section{padding:3rem 4vw}
+  .hero-inner{padding:2rem 4vw}
+}
+@media(max-width:420px){
+  .feat-grid{grid-template-columns:1fr}
+  .quick-chip{min-width:140px}
+}
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <div class="nav-logo" onclick="showPage('home')">Food<span>lovers</span></div>
+  <ul class="nav-links">
+    <li><a id="nav-home" class="active" onclick="showPage('home')">Home</a></li>
+    <li><a id="nav-menu" onclick="showPage('menu')">Menu</a></li>
+    <li><a id="nav-order" onclick="showPage('order')">Order</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-wa" onclick="openWhatsApp()">
+      <span>💬</span> WhatsApp Order
+    </button>
+    <button class="cart-btn" onclick="showPage('order')">
+      🛒 <span id="cart-count" class="cart-count">0</span>
+    </button>
+    <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ─── MOBILE MENU ─── -->
+<div class="mobile-menu" id="mobile-menu">
+  <a onclick="showPage('home');closeMobileMenu()">🏠 Home</a>
+  <a onclick="showPage('menu');closeMobileMenu()">🍽 Menu</a>
+  <a onclick="showPage('order');closeMobileMenu()">🛒 Order</a>
+  <a href="tel:+233503215601">📞 Call Us: 0503215601</a>
+  <button class="mobile-menu-wa" onclick="openWhatsApp();closeMobileMenu()">💬 Order via WhatsApp</button>
+</div>
+
+<!-- ─── FLOATING CART ─── -->
+<button class="float-cart" id="float-cart" onclick="showPage('order')">
+  <span class="float-cart-left">
+    🛒 View Order &nbsp;<span class="float-cart-count" id="float-count">0</span>
+  </span>
+  <span class="float-cart-price" id="float-price">GH₵ 0</span>
+</button>
+
+<!-- ═══════════════════ HOME PAGE ═══════════════════ -->
+<div id="home" class="page active">
+
+  <section id="home-hero">
+    <div class="hero-inner">
+      <div class="hero-badge">📍 Takoradi Mall Gate 2 · Ghana</div>
+      <h1>The <em>Biggest</em><br>Restaurant in<br>Takoradi</h1>
+      <p class="hero-sub">Local & Continental — from smoky Jollof & Banku to Pizzas, Shawarma & more. Fresh every day.</p>
+      <div class="hero-ctas">
+        <button class="btn-primary" onclick="showPage('menu')">🍽 See Our Menu</button>
+        <button class="btn-wa" onclick="openWhatsApp()">💬 Order on WhatsApp</button>
+        <button class="btn-outline" onclick="showPage('order')">Order Online</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Info strip -->
+  <div class="info-strip">
+    <div class="info-item">
+      <div class="info-icon">📍</div>
+      <div><strong>Takoradi Mall, Gate 2</strong><small>12 Liberation Rd, Takoradi</small></div>
+    </div>
+    <div class="info-item">
+      <div class="info-icon">📞</div>
+      <div><strong>+233 50 321 5601</strong><small>Call or WhatsApp</small></div>
+    </div>
+    <div class="info-item">
+      <div class="info-icon">🕐</div>
+      <div><strong>Open Daily</strong><small>Morning till late evening</small></div>
+    </div>
+    <div class="info-item">
+      <div class="info-icon">🍲</div>
+      <div><strong>Local & Continental</strong><small>Something for everyone</small></div>
+    </div>
+    <div class="info-item">
+      <div class="info-icon">🚗</div>
+      <div><strong>Pickup & Delivery</strong><small>Takoradi area</small></div>
+    </div>
+  </div>
+
+  <!-- Featured -->
+  <section class="section">
+    <p class="section-label">Customer Favourites</p>
+    <h2 class="section-title">What Everyone's Ordering</h2>
+    <div class="feat-grid" id="feat-grid"></div>
+  </section>
+
+  <!-- Promo banner -->
+  <div class="promo-banner">
+    <div class="section-label" style="margin-bottom:.4rem">Every Friday 🎉</div>
+    <h2>🍚 Waakye Friday Special</h2>
+    <p>The best Waakye in Takoradi — every Friday. Rice, beans, spaghetti, wele & stew. Call ahead to reserve yours before it runs out.</p>
+    <div style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap">
+      <button class="btn-primary" onclick="addToCart({id:'waakye',name:'Waakye (Friday Special)',price:45,emoji:'🍚'});showPage('order')">Add to Order</button>
+      <button class="btn-wa" onclick="openWhatsApp()">💬 Order via WhatsApp</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="foot-logo">Food<span>lovers</span></div>
+        <p class="foot-tagline">THE BIGGEST RESTAURANT IN TAKORADI. Serving Local &amp; Continental dishes fresh every day.</p>
+        <div class="foot-socials" style="margin-top:1rem">
+          <a href="https://www.instagram.com/foodlovers_gh/" target="_blank">📸 Instagram</a>
+          <a href="https://www.facebook.com/p/Foodlovers-61577763337924/" target="_blank">👍 Facebook</a>
+          <a href="tel:+233503215601">📞 Call Us</a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Find Us</h4>
+        <p>Takoradi Mall, Gate 2</p>
+        <p>12 Liberation Rd</p>
+        <p>Takoradi, Ghana</p>
+        <p style="margin-top:.5rem"><a href="https://maps.app.goo.gl/GVMJkjLNZow5VUmz8" target="_blank" style="color:var(--amber)">📍 View on Google Maps</a></p>
+      </div>
+      <div class="foot-col">
+        <h4>Quick Links</h4>
+        <a onclick="showPage('menu')">Our Menu</a>
+        <a onclick="showPage('order')">Place an Order</a>
+        <a onclick="openWhatsApp()">WhatsApp Order</a>
+        <a href="tel:+233503215601">Call: 0503215601</a>
+      </div>
+    </div>
+    <p class="foot-copy">© 2025 Foodlovers Takoradi. All rights reserved.</p>
+  </footer>
+</div>
+
+<!-- ═══════════════════ MENU PAGE ═══════════════════ -->
+<div id="menu" class="page">
+  <div class="menu-hero">
+    <h1>Our Full Menu</h1>
+    <p>Local & Continental — fresh, flavourful, made with love 🇬🇭</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="filterMenu('all',this)">All Items</button>
+    <button class="tab" onclick="filterMenu('local',this)">🍲 Local Dishes</button>
+    <button class="tab" onclick="filterMenu('continental',this)">🍕 Continental</button>
+    <button class="tab" onclick="filterMenu('sides',this)">🍟 Sides & Snacks</button>
+    <button class="tab" onclick="filterMenu('drinks',this)">🥤 Drinks</button>
+  </div>
+
+  <div id="menu-sections"></div>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="foot-logo">Food<span>lovers</span></div>
+        <p class="foot-tagline">📍 Takoradi Mall Gate 2 &nbsp;·&nbsp; 📞 +233 50 321 5601</p>
+      </div>
+      <div class="foot-col">
+        <h4>Order Now</h4>
+        <a onclick="openWhatsApp()">💬 WhatsApp Order</a>
+        <a onclick="showPage('order')">🛒 Online Order</a>
+        <a href="tel:+233503215601">📞 Call to Order</a>
+      </div>
+      <div class="foot-col">
+        <h4>Follow Us</h4>
+        <a href="https://www.instagram.com/foodlovers_gh/" target="_blank">Instagram @foodlovers_gh</a>
+        <a href="https://www.facebook.com/p/Foodlovers-61577763337924/" target="_blank">Facebook</a>
+      </div>
+    </div>
+    <p class="foot-copy">© 2025 Foodlovers Takoradi. All rights reserved.</p>
+  </footer>
+</div>
+
+<!-- ═══════════════════ ORDER PAGE ═══════════════════ -->
+<div id="order" class="page">
+  <div class="order-layout">
+
+    <!-- LEFT: form -->
+    <div class="order-left">
+      <div class="order-header">
+        <h1>Place Your Order</h1>
+        <p>Add items and fill in your details — we'll confirm by phone.</p>
+      </div>
+
+      <div class="browse-link" onclick="showPage('menu')">
+        ← Browse the full menu
+      </div>
+
+      <p class="quick-label">Quick Picks</p>
+      <div class="quick-scroll" id="quick-scroll"></div>
+
+      <div class="order-form-card">
+        <h3>Your Details</h3>
+
+        <div class="f-row" id="f-row-name">
+          <label for="f-name">Full Name *</label>
+          <input type="text" id="f-name" placeholder="e.g. Kwame Mensah" oninput="clearError('f-row-name')"/>
+          <p class="f-error-msg">Please enter your name.</p>
+        </div>
+
+        <div class="f-row" id="f-row-phone">
+          <label for="f-phone">Phone Number *</label>
+          <input type="tel" id="f-phone" placeholder="e.g. 0201234567" oninput="clearError('f-row-phone')"/>
+          <p class="f-error-msg">Please enter a valid phone number.</p>
+        </div>
+
+        <div class="f-row" id="f-row-type">
+          <label for="f-type">How would you like to receive your order? *</label>
+          <select id="f-type" onchange="toggleAddress()">
+            <option value="">— Select an option —</option>
+            <option value="pickup">🏪 Pickup at Takoradi Mall Gate 2</option>
+            <option value="delivery">🚗 Delivery (Takoradi area)</option>
+            <option value="dine">🍽 Dine-in</option>
+          </select>
+          <p class="f-error-msg">Please select an option.</p>
+        </div>
+
+        <div class="f-row hidden" id="f-row-address">
+          <label for="f-address">Delivery Address *</label>
+          <input type="text" id="f-address" placeholder="Street, area, nearest landmark..." oninput="clearError('f-row-address')"/>
+          <p class="f-error-msg">Please enter your delivery address.</p>
+        </div>
+
+        <div class="f-row">
+          <label for="f-notes">Special Instructions <span style="color:var(--muted2);font-size:.75rem">(optional)</span></label>
+          <textarea id="f-notes" placeholder="Extra spice, no onions, specific proteins, etc..."></textarea>
+        </div>
+
+        <div class="order-btns">
+          <button class="btn-wa" onclick="placeOrder('whatsapp')">💬 Send Order via WhatsApp</button>
+          <button class="btn-primary" style="background:var(--red);color:white;border:none" onclick="placeOrder('online')">✅ Confirm Order Online</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: cart -->
+    <div class="cart-panel" id="cart-panel">
+      <div class="cart-panel-head">
+        <h3>Your Order</h3>
+        <span id="cart-item-label">0 items</span>
+      </div>
+      <div id="cart-items-list">
+        <div class="cart-empty-state">
+          <div class="empty-icon">🛒</div>
+          <p>Nothing here yet.<br>Add items from the <a onclick="showPage('menu')">menu</a> or use the Quick Picks above.</p>
+        </div>
+      </div>
+      <div class="cart-totals" id="cart-totals" style="display:none">
+        <div class="total-row"><span>Subtotal</span><span id="subtotal">GH₵ 0.00</span></div>
+        <div class="total-row"><span>Delivery fee</span><span>Confirmed on call</span></div>
+        <div class="total-row grand"><span>Total</span><span id="grand-total">GH₵ 0.00</span></div>
+        <button class="clear-btn" onclick="clearCart()">🗑 Clear cart</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ─── TOAST ─── -->
+<div id="toast"></div>
+
+<!-- ─── SUCCESS MODAL ─── -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <div class="modal-icon">🎉</div>
+    <h2>Order Received!</h2>
+    <div class="order-ref" id="order-ref">ORD-000</div>
+    <p id="modal-msg">Thanks! We'll call you shortly to confirm and give you an estimated time.<br><br>Questions? Call us on <strong style="color:var(--amber)">+233 50 321 5601</strong></p>
+    <button class="modal-wa" onclick="openWhatsApp();closeModal()">💬 Follow up on WhatsApp</button>
+    <button class="modal-close" onclick="closeModal()">Back to Home</button>
+  </div>
+</div>
+
+<script>
+// ═══════════════ DATA ═══════════════
+const MENU = [
+  // LOCAL
+  {id:'waakye',    cat:'local', name:'Waakye',                  price:45,  emoji:'🍚', desc:'Rice & beans with spaghetti, wele, egg & stew. Fridays only.',
+   img:'https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=300&q=70'},
+  {id:'goatjollof',cat:'local', name:'Goat Jollof Rice',         price:65,  emoji:'🍲', desc:'Smoky party jollof with tender goat meat & plantain.',
+   img:'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=300&q=70'},
+  {id:'banku',     cat:'local', name:'Banku & Okro Stew',         price:50,  emoji:'🫕', desc:'Oilless okro stew with assorted protein — a Foodlovers classic.',
+   img:'https://images.unsplash.com/photo-1547592180-85f173990554?w=300&q=70'},
+  {id:'omotuo',    cat:'local', name:'Omo Tuo & Groundnut Soup',  price:55,  emoji:'🥣', desc:'Rich groundnut soup with soft rice balls. Weekends only.',
+   img:'https://images.unsplash.com/photo-1547592180-85f173990554?w=300&q=70'},
+  {id:'checkcheck',cat:'local', name:'Cheke Cheke',               price:50,  emoji:'🍛', desc:'A Takoradi favourite — spiced & hearty, straight from the fire.',
+   img:'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=300&q=70'},
+  {id:'jollof',    cat:'local', name:'Jollof Rice',               price:40,  emoji:'🍛', desc:'Classic well-seasoned jollof. Choose your protein at the counter.',
+   img:'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=300&q=70'},
+  // CONTINENTAL
+  {id:'pizza',     cat:'continental', name:'Pizza (Regular)',      price:50,  emoji:'🍕', desc:'Freshly baked pizza, loaded with toppings.',
+   img:'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=300&q=70'},
+  {id:'shawarma',  cat:'continental', name:'Shawarma',              price:55,  emoji:'🌯', desc:'Grilled meat, veg & sauce wrapped in soft flatbread.',
+   img:'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=300&q=70'},
+  {id:'burger',    cat:'continental', name:'Juicy Burger',          price:55,  emoji:'🍔', desc:'Double patty with lettuce, tomato & our house sauce.',
+   img:'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&q=70'},
+  {id:'wings',     cat:'continental', name:'Chicken Wings',         price:65,  emoji:'🍗', desc:'Golden crispy wings. Mild or spicy — your call.',
+   img:'https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=300&q=70'},
+  // SIDES
+  {id:'fries',     cat:'sides', name:'Loaded Fries',               price:60,  emoji:'🍟', desc:'Cheesy loaded fries — the most talked-about side in Takoradi.',
+   img:'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=300&q=70'},
+  {id:'chips',     cat:'sides', name:'Plain Fries',                 price:30,  emoji:'🍟', desc:'Golden, crispy, lightly seasoned.',
+   img:'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=300&q=70'},
+  {id:'sausage',   cat:'sides', name:'Sausage & Fries',             price:40,  emoji:'🌭', desc:'Grilled sausage alongside a portion of crispy fries.',
+   img:'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=300&q=70'},
+  // DRINKS
+  {id:'sobolo',    cat:'drinks', name:'Sobolo (Zobo)',               price:15,  emoji:'🥤', desc:'Chilled hibiscus drink, lightly spiced. A Ghanaian staple.',
+   img:'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&q=70'},
+  {id:'malt',      cat:'drinks', name:'Malta Guinness',              price:12,  emoji:'🍺', desc:'Rich, smooth malt — cold and refreshing.',
+   img:'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=300&q=70'},
+  {id:'juice',     cat:'drinks', name:'Fresh Juice',                 price:20,  emoji:'🧃', desc:'Seasonal fresh fruit juice made to order.',
+   img:'https://images.unsplash.com/photo-1546171753-97d7676e4602?w=300&q=70'},
+  {id:'water',     cat:'drinks', name:'Bottled Water',               price:5,   emoji:'💧', desc:'500ml chilled water.',
+   img:'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=300&q=70'},
+];
+
+const FEATURED_IDS = ['goatjollof','wings','shawarma','fries','waakye','pizza'];
+const QUICK_IDS    = ['goatjollof','pizza','shawarma','fries','wings','banku'];
+const CAT_LABELS   = {local:'🍲 Local Dishes',continental:'🍕 Continental',sides:'🍟 Sides & Snacks',drinks:'🥤 Drinks'};
+let cart = [];
+
+// ═══════════════ NAVIGATION ═══════════════
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  ['home','menu','order'].forEach(p=>{
+    const el=document.getElementById('nav-'+p);
+    if(el) el.classList.toggle('active', p===id);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+  closeMobileMenu();
+}
+
+function toggleMobileMenu() {
+  const m=document.getElementById('mobile-menu');
+  const h=document.getElementById('hamburger');
+  m.classList.toggle('open');
+  h.classList.toggle('open');
+}
+function closeMobileMenu() {
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+
+// ═══════════════ CART ═══════════════
+function addToCart(item) {
+  const ex = cart.find(c=>c.id===item.id);
+  if(ex){ ex.qty++; } else { cart.push({...item, qty:1}); }
+  renderCart();
+  showToast('✅ '+item.emoji+' '+item.name+' added!');
+  bumpCount();
+}
+
+function changeQty(id, delta) {
+  const item = cart.find(c=>c.id===id);
+  if(!item) return;
+  item.qty += delta;
+  if(item.qty <= 0) cart = cart.filter(c=>c.id!==id);
+  renderCart();
+}
+
+function clearCart() {
+  cart = [];
+  renderCart();
+  showToast('Cart cleared.');
+}
+
+function cartCount() { return cart.reduce((a,c)=>a+c.qty, 0); }
+function cartTotal() { return cart.reduce((a,c)=>a+c.price*c.qty, 0); }
+
+function renderCart() {
+  const n = cartCount(), total = cartTotal();
+  const fmt = v => 'GH₵ '+v.toFixed(2);
+
+  // nav count
+  const cc = document.getElementById('cart-count');
+  cc.textContent = n;
+
+  // floating bar
+  const fb = document.getElementById('float-cart');
+  document.getElementById('float-count').textContent = n + ' item'+(n!==1?'s':'');
+  document.getElementById('float-price').textContent = fmt(total);
+  fb.classList.toggle('visible', n > 0);
+
+  // panel header
+  document.getElementById('cart-item-label').textContent = n + ' item'+(n!==1?'s':'');
+
+  const list = document.getElementById('cart-items-list');
+  const tots = document.getElementById('cart-totals');
+
+  if(cart.length === 0) {
+    list.innerHTML = `<div class="cart-empty-state">
+      <div class="empty-icon">🛒</div>
+      <p>Nothing here yet.<br>Add items from the <a onclick="showPage('menu')">menu</a> or Quick Picks above.</p>
+    </div>`;
+    tots.style.display = 'none';
+    return;
+  }
+
+  list.innerHTML = cart.map(item=>`
+    <div class="cart-line">
+      <span class="cart-line-emoji">${item.emoji}</span>
+      <div class="cart-line-info">
+        <h5>${item.name}</h5>
+        <small>GH₵ ${item.price} each</small>
+      </div>
+      <div class="qty-ctrl">
+        <button class="qty-btn" onclick="changeQty('${item.id}',-1)">−</button>
+        <span class="qty-num">${item.qty}</span>
+        <button class="qty-btn" onclick="changeQty('${item.id}',+1)">+</button>
+      </div>
+      <span class="line-price">${fmt(item.price*item.qty)}</span>
+    </div>`).join('');
+
+  document.getElementById('subtotal').textContent = fmt(total);
+  document.getElementById('grand-total').textContent = fmt(total);
+  tots.style.display = 'block';
+}
+
+function bumpCount() {
+  const el = document.getElementById('cart-count');
+  el.classList.remove('bump');
+  void el.offsetWidth;
+  el.classList.add('bump');
+  setTimeout(()=>el.classList.remove('bump'), 400);
+}
+
+// ═══════════════ TOAST ═══════════════
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._t);
+  t._t = setTimeout(()=>t.classList.remove('show'), 2400);
+}
+
+// ═══════════════ FEATURED (HOME) ═══════════════
+const featGrid = document.getElementById('feat-grid');
+FEATURED_IDS.forEach(id=>{
+  const item = MENU.find(m=>m.id===id);
+  if(!item) return;
+  const catTag = item.cat==='local'?'Local 🇬🇭':item.cat==='continental'?'Continental':'Side';
+  featGrid.innerHTML += `
+    <div class="feat-card">
+      <div class="feat-img" style="background-image:url('${item.img}')">
+        <span class="feat-tag">${catTag}</span>
+      </div>
+      <div class="feat-body">
+        <h3>${item.emoji} ${item.name}</h3>
+        <p>${item.desc}</p>
+        <div class="feat-footer">
+          <span class="feat-price">GH₵ ${item.price}</span>
+          <button class="add-btn" id="feat-add-${item.id}"
+            onclick="handleFeatAdd('${item.id}','${item.name}',${item.price},'${item.emoji}',this)">+</button>
+        </div>
+      </div>
+    </div>`;
+});
+
+function handleFeatAdd(id, name, price, emoji, btn) {
+  addToCart({id,name,price,emoji});
+  btn.textContent = '✓';
+  btn.classList.add('added');
+  setTimeout(()=>{btn.textContent='+';btn.classList.remove('added');}, 1400);
+}
+
+// ═══════════════ MENU PAGE ═══════════════
+function buildMenu(filter) {
+  const cats = filter==='all' ? ['local','continental','sides','drinks'] : [filter];
+  document.getElementById('menu-sections').innerHTML = cats.map(cat=>{
+    const items = MENU.filter(m=>m.cat===cat);
+    if(!items.length) return '';
+    return `<div class="menu-section">
+      <h2 class="cat-title">${CAT_LABELS[cat]}</h2>
+      <div class="menu-grid">
+        ${items.map(item=>`
+          <div class="menu-card">
+            <div class="menu-thumb" style="background-image:url('${item.img}')"></div>
+            <div class="menu-info">
+              <h4>${item.emoji} ${item.name}</h4>
+              <p>${item.desc}</p>
+            </div>
+            <div class="menu-right">
+              <span class="menu-price">GH₵ ${item.price}</span>
+              <button class="menu-add-btn" id="madd-${item.id}"
+                onclick="handleMenuAdd('${item.id}','${item.name}',${item.price},'${item.emoji}',this)">+ Add</button>
+            </div>
+          </div>`).join('')}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function handleMenuAdd(id, name, price, emoji, btn) {
+  addToCart({id,name,price,emoji});
+  btn.textContent = '✓ Added';
+  btn.classList.add('added');
+  setTimeout(()=>{btn.textContent='+ Add';btn.classList.remove('added');}, 1400);
+}
+
+function filterMenu(cat, btn) {
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  buildMenu(cat);
+}
+
+buildMenu('all');
+
+// ═══════════════ QUICK PICKS (ORDER) ═══════════════
+const qs = document.getElementById('quick-scroll');
+QUICK_IDS.forEach(id=>{
+  const item = MENU.find(m=>m.id===id);
+  if(!item) return;
+  qs.innerHTML += `
+    <div class="quick-chip">
+      <div class="quick-chip-img" style="background-image:url('${item.img}')"></div>
+      <div class="quick-chip-info">
+        <h5>${item.emoji} ${item.name}</h5>
+        <span>GH₵ ${item.price}</span>
+      </div>
+      <button class="quick-chip-add" id="qadd-${item.id}"
+        onclick="handleQuickAdd('${item.id}','${item.name}',${item.price},'${item.emoji}',this)">+</button>
+    </div>`;
+});
+
+function handleQuickAdd(id, name, price, emoji, btn) {
+  addToCart({id,name,price,emoji});
+  btn.textContent = '✓';
+  btn.classList.add('added');
+  setTimeout(()=>{btn.textContent='+';btn.classList.remove('added');}, 1400);
+}
+
+// ═══════════════ ADDRESS TOGGLE ═══════════════
+function toggleAddress() {
+  const type = document.getElementById('f-type').value;
+  const row  = document.getElementById('f-row-address');
+  row.classList.toggle('hidden', type !== 'delivery');
+  clearError('f-row-type');
+}
+
+// ═══════════════ FORM VALIDATION ═══════════════
+function setError(rowId, msg) {
+  const row = document.getElementById(rowId);
+  if(msg) row.querySelector('.f-error-msg').textContent = msg;
+  row.classList.add('error');
+}
+function clearError(rowId) {
+  document.getElementById(rowId)?.classList.remove('error');
+}
+
+// ═══════════════ WHATSAPP ═══════════════
+function buildWhatsAppMsg(name, phone, type, address, notes) {
+  const typeLabel = {pickup:'Pickup at Takoradi Mall Gate 2', delivery:'Delivery', dine:'Dine-in'}[type] || type;
+  let msg = `🍽 *New Order — Foodlovers Takoradi*\n\n`;
+  msg += `*Name:* ${name}\n*Phone:* ${phone}\n*Order Type:* ${typeLabel}\n`;
+  if(type==='delivery' && address) msg += `*Address:* ${address}\n`;
+  msg += `\n*Items Ordered:*\n`;
+  cart.forEach(c=>{
+    msg += `${c.emoji} ${c.name} x${c.qty} — GH₵ ${(c.price*c.qty).toFixed(2)}\n`;
+  });
+  msg += `\n*Total: GH₵ ${cartTotal().toFixed(2)}*`;
+  if(notes) msg += `\n\n*Notes:* ${notes}`;
+  return encodeURIComponent(msg);
+}
+
+function openWhatsApp(msg) {
+  const phone = '233503215601';
+  const text  = msg || encodeURIComponent("Hi Foodlovers! I'd like to place an order 😊");
+  window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+}
+
+// ═══════════════ PLACE ORDER ═══════════════
+function placeOrder(method) {
+  const name    = document.getElementById('f-name').value.trim();
+  const phone   = document.getElementById('f-phone').value.trim();
+  const type    = document.getElementById('f-type').value;
+  const address = document.getElementById('f-address').value.trim();
+  const notes   = document.getElementById('f-notes').value.trim();
+
+  let valid = true;
+  if(!name)    { setError('f-row-name','Please enter your name.'); valid=false; }
+  if(!phone)   { setError('f-row-phone','Please enter your phone number.'); valid=false; }
+  if(!type)    { setError('f-row-type','Please choose how you want to receive your order.'); valid=false; }
+  if(type==='delivery' && !address) { setError('f-row-address','Please enter your delivery address.'); valid=false; }
+  if(cart.length === 0) { showToast('⚠️ Your cart is empty! Add some items first.'); valid=false; }
+  if(!valid) return;
+
+  if(method === 'whatsapp') {
+    const waMsg = buildWhatsAppMsg(name, phone, type, address, notes);
+    openWhatsApp(waMsg);
+    showSuccessModal(name, true);
+  } else {
+    showSuccessModal(name, false);
+  }
+}
+
+function showSuccessModal(name, isWa) {
+  const ref = 'FL-' + Date.now().toString().slice(-5);
+  document.getElementById('order-ref').textContent = ref;
+  document.getElementById('modal-msg').innerHTML = isWa
+    ? `Your order has been sent to our WhatsApp! We'll reply to confirm shortly.<br><br>Reference: <strong style="color:var(--amber)">${ref}</strong>`
+    : `Thanks, <strong>${name}</strong>! We got your order and will call you on <strong>${document.getElementById('f-phone').value}</strong> to confirm.<br><br>Reference: <strong style="color:var(--amber)">${ref}</strong>`;
+  document.getElementById('modal-overlay').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  clearCart();
+  ['f-name','f-phone','f-address','f-notes'].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; });
+  document.getElementById('f-type').value = '';
+  document.getElementById('f-row-address').classList.add('hidden');
+  showPage('home');
+}
+
+// init
+renderCart();
+</script>
+</body>
+</html>
