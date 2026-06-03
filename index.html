@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Foodlovers | Takoradi Mall</title>
+<title>Afang Uyo | Authentic South-South Cuisine · Abuja</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ─── TOKENS ─── */
 :root {
-  --red:#D72638; --red-dark:#B51E2C;
-  --amber:#F4A916; --amber-dark:#D4900E;
-  --dark:#0F0B09; --card:#1A1410; --card2:#221C16;
-  --border:rgba(244,169,22,.16); --border2:rgba(255,255,255,.07);
+  --red:#C2410C; --red-dark:#9A340A;
+  --amber:#F59E0B; --amber-dark:#D97706;
+  --dark:#0C0905; --card:#191209; --card2:#201608;
+  --border:rgba(245,158,11,.15); --border2:rgba(255,255,255,.07);
   --text:#F5ECD7; --muted:#9E8A74; --muted2:#6B5A4A;
-  --white:#fff; --green:#22C55E;
+  --white:#fff; --green:#16A34A;
   --nav:68px;
   --radius:14px; --radius-sm:9px; --radius-lg:20px;
   --shadow:0 8px 32px rgba(0,0,0,.45);
@@ -40,11 +40,11 @@ nav{
   height:var(--nav);
   display:flex;align-items:center;justify-content:space-between;
   padding:0 5vw;
-  background:rgba(15,11,9,.95);
+  background:rgba(12,9,5,.96);
   backdrop-filter:blur(14px);
   border-bottom:1px solid var(--border);
 }
-.nav-logo{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:var(--amber);cursor:pointer;user-select:none}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:900;color:var(--amber);cursor:pointer;user-select:none;letter-spacing:-.01em}
 .nav-logo span{color:var(--red)}
 .nav-links{display:flex;gap:2rem;list-style:none}
 .nav-links a{color:var(--muted);font-size:.88rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;transition:color .2s;cursor:pointer}
@@ -80,7 +80,7 @@ nav{
 .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 .mobile-menu{
   display:none;position:fixed;top:var(--nav);left:0;right:0;z-index:190;
-  background:rgba(15,11,9,.98);backdrop-filter:blur(14px);
+  background:rgba(12,9,5,.99);backdrop-filter:blur(14px);
   padding:1.5rem 5vw 2rem;border-bottom:1px solid var(--border);
   flex-direction:column;gap:0;
 }
@@ -109,7 +109,7 @@ nav{
   background:var(--red);color:var(--white);
   border-radius:999px;padding:.85rem 1.8rem;
   display:flex;align-items:center;gap:1rem;
-  box-shadow:0 8px 30px rgba(215,38,56,.5);
+  box-shadow:0 8px 30px rgba(194,65,12,.5);
   cursor:pointer;border:none;font-family:'DM Sans',sans-serif;
   transition:transform .4s cubic-bezier(.34,1.56,.64,1),opacity .3s;
   white-space:nowrap;min-width:240px;justify-content:space-between;
@@ -150,16 +150,16 @@ nav{
   display:flex;flex-direction:column;
   background:
     linear-gradient(180deg,transparent 40%,var(--dark) 100%),
-    linear-gradient(160deg,rgba(215,38,56,.2) 0%,transparent 55%),
-    url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1600&q=80') center/cover no-repeat;
+    linear-gradient(160deg,rgba(194,65,12,.25) 0%,transparent 55%),
+    url('https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=1600&q=80') center/cover no-repeat;
 }
 .hero-inner{
   flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;padding:3rem 5vw;max-width:800px;margin:0 auto;width:100%;
+  text-align:center;padding:3rem 5vw;max-width:820px;margin:0 auto;width:100%;
 }
 .hero-badge{
   display:inline-flex;align-items:center;gap:.4rem;
-  background:rgba(244,169,22,.1);border:1px solid rgba(244,169,22,.35);
+  background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.35);
   color:var(--amber);font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
   padding:.35rem 1rem;border-radius:999px;margin-bottom:1.4rem;
 }
@@ -169,7 +169,7 @@ nav{
   color:var(--white);margin-bottom:1.1rem;
 }
 .hero-inner h1 em{color:var(--amber);font-style:italic}
-.hero-sub{font-size:clamp(.95rem,2vw,1.1rem);color:var(--muted);line-height:1.75;max-width:480px;margin:0 auto 2.5rem}
+.hero-sub{font-size:clamp(.95rem,2vw,1.1rem);color:var(--muted);line-height:1.75;max-width:500px;margin:0 auto 2.5rem}
 .hero-ctas{display:flex;gap:.9rem;flex-wrap:wrap;justify-content:center}
 
 .info-strip{
@@ -186,7 +186,7 @@ nav{
 .info-item:last-child{border-right:none}
 .info-icon{
   width:40px;height:40px;border-radius:50%;flex-shrink:0;
-  background:rgba(244,169,22,.1);border:1px solid rgba(244,169,22,.25);
+  background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);
   display:flex;align-items:center;justify-content:center;font-size:1.1rem;
 }
 .info-item strong{font-size:.95rem;color:var(--text);display:block;white-space:nowrap}
@@ -198,7 +198,7 @@ nav{
   background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);
   overflow:hidden;transition:transform .25s,border-color .25s;
 }
-.feat-card:hover{transform:translateY(-4px);border-color:rgba(244,169,22,.4)}
+.feat-card:hover{transform:translateY(-4px);border-color:rgba(245,158,11,.4)}
 .feat-img{width:100%;height:170px;background-size:cover;background-position:center;position:relative;flex-shrink:0}
 .feat-tag{
   position:absolute;top:10px;left:10px;
@@ -223,12 +223,12 @@ nav{
 /* promo banner */
 .promo-banner{
   margin:0 5vw 4rem;
-  background:linear-gradient(135deg,rgba(215,38,56,.2) 0%,rgba(244,169,22,.1) 100%);
-  border:1px solid rgba(244,169,22,.25);border-radius:var(--radius-lg);
+  background:linear-gradient(135deg,rgba(194,65,12,.22) 0%,rgba(245,158,11,.1) 100%);
+  border:1px solid rgba(245,158,11,.25);border-radius:var(--radius-lg);
   padding:3rem 2.5rem;text-align:center;
 }
 .promo-banner h2{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:900;color:var(--white);margin:.5rem 0 .8rem}
-.promo-banner p{color:var(--muted);max-width:440px;margin:0 auto 1.8rem;line-height:1.7}
+.promo-banner p{color:var(--muted);max-width:480px;margin:0 auto 1.8rem;line-height:1.7}
 
 /* ─── MENU PAGE ─── */
 #menu{padding-top:var(--nav)}
@@ -240,7 +240,7 @@ nav{
   display:flex;gap:.5rem;overflow-x:auto;scrollbar-width:none;
   padding:1.2rem 5vw;
   border-bottom:1px solid var(--border);
-  position:sticky;top:var(--nav);background:rgba(15,11,9,.97);z-index:50;
+  position:sticky;top:var(--nav);background:rgba(12,9,5,.97);z-index:50;
   backdrop-filter:blur(10px);
 }
 .tabs::-webkit-scrollbar{display:none}
@@ -251,7 +251,7 @@ nav{
   font-size:.83rem;font-weight:500;white-space:nowrap;
   transition:all .18s;flex-shrink:0;
 }
-.tab:hover{border-color:rgba(244,169,22,.4);color:var(--amber)}
+.tab:hover{border-color:rgba(245,158,11,.4);color:var(--amber)}
 .tab.active{background:var(--red);border-color:var(--red);color:var(--white);font-weight:600}
 
 .menu-section{padding:2rem 5vw}
@@ -267,7 +267,7 @@ nav{
   display:flex;align-items:center;gap:.9rem;padding:.9rem;
   transition:border-color .2s,background .2s;cursor:default;
 }
-.menu-card:hover{border-color:rgba(244,169,22,.3);background:var(--card2)}
+.menu-card:hover{border-color:rgba(245,158,11,.3);background:var(--card2)}
 .menu-thumb{
   width:70px;height:70px;border-radius:10px;flex-shrink:0;
   background-size:cover;background-position:center;
@@ -312,7 +312,7 @@ nav{
   cursor:pointer;flex-shrink:0;min-width:160px;
   transition:border-color .2s,background .2s;
 }
-.quick-chip:hover{border-color:rgba(244,169,22,.4);background:var(--card2)}
+.quick-chip:hover{border-color:rgba(245,158,11,.4);background:var(--card2)}
 .quick-chip-img{width:44px;height:44px;border-radius:8px;background-size:cover;background-position:center;flex-shrink:0}
 .quick-chip-info h5{font-size:.82rem;font-weight:600;color:var(--white)}
 .quick-chip-info span{font-size:.78rem;color:var(--amber);font-weight:700}
@@ -342,7 +342,7 @@ nav{
 .f-error-msg{font-size:.75rem;color:var(--red);margin-top:.3rem;display:none}
 .f-row.error .f-error-msg{display:block}
 .f-row textarea{resize:vertical;min-height:75px}
-.f-row select option{background:#1A1410}
+.f-row select option{background:#191209}
 .f-row.hidden{display:none}
 
 .order-btns{display:flex;flex-direction:column;gap:.8rem;margin-top:1.5rem}
@@ -377,7 +377,7 @@ nav{
 }
 .qty-btn:hover{background:rgba(255,255,255,.14)}
 .qty-num{font-size:.85rem;font-weight:600;color:var(--white);min-width:16px;text-align:center}
-.line-price{font-size:.88rem;font-weight:700;color:var(--amber);flex-shrink:0;min-width:52px;text-align:right}
+.line-price{font-size:.88rem;font-weight:700;color:var(--amber);flex-shrink:0;min-width:60px;text-align:right}
 .cart-totals{margin-top:1rem;padding-top:.9rem;border-top:1px solid var(--border)}
 .total-row{display:flex;justify-content:space-between;font-size:.85rem;color:var(--muted);margin-bottom:.4rem}
 .total-row.grand{color:var(--white);font-size:1rem;font-weight:700;margin-top:.6rem;padding-top:.6rem;border-top:1px solid var(--border)}
@@ -387,14 +387,14 @@ nav{
   border:1px solid var(--border2);cursor:pointer;border-radius:9px;
   padding:.55rem;font-size:.8rem;transition:border-color .2s,color .2s;
 }
-.clear-btn:hover{border-color:rgba(215,38,56,.5);color:var(--red)}
+.clear-btn:hover{border-color:rgba(194,65,12,.5);color:var(--red)}
 
 /* ─── FOOTER ─── */
 footer{background:var(--card);border-top:1px solid var(--border);padding:3.5rem 5vw 2rem}
 .footer-inner{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;margin-bottom:2.5rem}
 .foot-logo{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--amber);margin-bottom:.5rem}
 .foot-logo span{color:var(--red)}
-.foot-tagline{font-size:.82rem;color:var(--muted);line-height:1.6;max-width:220px}
+.foot-tagline{font-size:.82rem;color:var(--muted);line-height:1.6;max-width:240px}
 .foot-col h4{font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.9rem}
 .foot-col p,.foot-col a{font-size:.88rem;color:var(--text);line-height:2;display:block}
 .foot-col a:hover{color:var(--amber)}
@@ -449,10 +449,18 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:3.5rem 
 }
 .modal-close:hover{border-color:var(--border);color:var(--text)}
 .order-ref{
-  display:inline-block;background:rgba(244,169,22,.12);border:1px solid rgba(244,169,22,.3);
+  display:inline-block;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.3);
   color:var(--amber);border-radius:8px;padding:.4rem 1rem;font-size:.88rem;font-weight:700;
   margin-bottom:1.2rem;letter-spacing:.05em;
 }
+
+/* ─── CATERING NOTICE BANNER ─── */
+.notice-bar{
+  background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);
+  border-radius:var(--radius-sm);padding:.65rem 1rem;margin-bottom:1.5rem;
+  display:flex;align-items:flex-start;gap:.6rem;font-size:.82rem;color:var(--muted);line-height:1.5;
+}
+.notice-bar span:first-child{font-size:1rem;flex-shrink:0;margin-top:.05rem}
 
 /* ─── RESPONSIVE ─── */
 @media(max-width:960px){
@@ -482,7 +490,7 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:3.5rem 
 
 <!-- ─── NAV ─── -->
 <nav>
-  <div class="nav-logo" onclick="showPage('home')">Food<span>lovers</span></div>
+  <div class="nav-logo" onclick="showPage('home')">Afang <span>Uyo</span></div>
   <ul class="nav-links">
     <li><a id="nav-home" class="active" onclick="showPage('home')">Home</a></li>
     <li><a id="nav-menu" onclick="showPage('menu')">Menu</a></li>
@@ -504,9 +512,9 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:3.5rem 
 <!-- ─── MOBILE MENU ─── -->
 <div class="mobile-menu" id="mobile-menu">
   <a onclick="showPage('home');closeMobileMenu()">🏠 Home</a>
-  <a onclick="showPage('menu');closeMobileMenu()">🍽 Menu</a>
+  <a onclick="showPage('menu');closeMobileMenu()">🍲 Menu</a>
   <a onclick="showPage('order');closeMobileMenu()">🛒 Order</a>
-  <a href="tel:+233503215601">📞 Call Us: 0503215601</a>
+  <a href="tel:+2348060493317">📞 Call Us: 08060493317</a>
   <button class="mobile-menu-wa" onclick="openWhatsApp();closeMobileMenu()">💬 Order via WhatsApp</button>
 </div>
 
@@ -515,7 +523,7 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:3.5rem 
   <span class="float-cart-left">
     🛒 View Order &nbsp;<span class="float-cart-count" id="float-count">0</span>
   </span>
-  <span class="float-cart-price" id="float-price">GH₵ 0</span>
+  <span class="float-cart-price" id="float-price">₦0</span>
 </button>
 
 <!-- ═══════════════════ HOME PAGE ═══════════════════ -->
@@ -523,11 +531,11 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:3.5rem 
 
   <section id="home-hero">
     <div class="hero-inner">
-      <div class="hero-badge">📍 Takoradi Mall Gate 2 · Ghana</div>
-      <h1>The <em>Biggest</em><br>Restaurant in<br>Takoradi</h1>
-      <p class="hero-sub">Local & Continental — from smoky Jollof & Banku to Pizzas, Shawarma & more. Fresh every day.</p>
+      <div class="hero-badge">📍 Phase 5, Kurudu · Abuja, FCT</div>
+      <h1>Authentic <em>South-South</em><br>Cuisine in Abuja</h1>
+      <p class="hero-sub">From soul-warming Afang Soup & Ekpang Nkukwo to Premium Food Trays & Event Catering — real Akwa Ibom flavours, made fresh every time.</p>
       <div class="hero-ctas">
-        <button class="btn-primary" onclick="showPage('menu')">🍽 See Our Menu</button>
+        <button class="btn-primary" onclick="showPage('menu')">🍲 See Our Menu</button>
         <button class="btn-wa" onclick="openWhatsApp()">💬 Order on WhatsApp</button>
         <button class="btn-outline" onclick="showPage('order')">Order Online</button>
       </div>
@@ -538,23 +546,23 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:3.5rem 
   <div class="info-strip">
     <div class="info-item">
       <div class="info-icon">📍</div>
-      <div><strong>Takoradi Mall, Gate 2</strong><small>12 Liberation Rd, Takoradi</small></div>
+      <div><strong>Phase 5, Kurudu, Abuja</strong><small>FCT, Nigeria</small></div>
     </div>
     <div class="info-item">
       <div class="info-icon">📞</div>
-      <div><strong>+233 50 321 5601</strong><small>Call or WhatsApp</small></div>
+      <div><strong>08060493317</strong><small>Call or WhatsApp</small></div>
     </div>
     <div class="info-item">
       <div class="info-icon">🕐</div>
-      <div><strong>Open Daily</strong><small>Morning till late evening</small></div>
+      <div><strong>Mon – Saturday</strong><small>Orders: 24/48hrs notice</small></div>
     </div>
     <div class="info-item">
       <div class="info-icon">🍲</div>
-      <div><strong>Local & Continental</strong><small>Something for everyone</small></div>
+      <div><strong>Soups, Trays & Catering</strong><small>Authentic Akwa Ibom flavours</small></div>
     </div>
     <div class="info-item">
       <div class="info-icon">🚗</div>
-      <div><strong>Pickup & Delivery</strong><small>Takoradi area</small></div>
+      <div><strong>Pickup & Delivery</strong><small>Abuja area</small></div>
     </div>
   </div>
 
@@ -567,11 +575,11 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:3.5rem 
 
   <!-- Promo banner -->
   <div class="promo-banner">
-    <div class="section-label" style="margin-bottom:.4rem">Every Friday 🎉</div>
-    <h2>🍚 Waakye Friday Special</h2>
-    <p>The best Waakye in Takoradi — every Friday. Rice, beans, spaghetti, wele & stew. Call ahead to reserve yours before it runs out.</p>
+    <div class="section-label" style="margin-bottom:.4rem">Signature Dish ✨</div>
+    <h2>🫕 Ekpang Nkukwo — Order Yours Today</h2>
+    <p>Our most-talked-about dish. Grated cocoyam wrapped in cocoyam leaves, loaded with periwinkles, fresh fish & palm oil. A true Akwa Ibom delicacy you can't find anywhere else in Abuja. <strong>24hr notice required.</strong></p>
     <div style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap">
-      <button class="btn-primary" onclick="addToCart({id:'waakye',name:'Waakye (Friday Special)',price:45,emoji:'🍚'});showPage('order')">Add to Order</button>
+      <button class="btn-primary" onclick="addToCart({id:'ekpang',name:'Ekpang Nkukwo',price:6000,emoji:'🫕'});showPage('order')">Add to Order</button>
       <button class="btn-wa" onclick="openWhatsApp()">💬 Order via WhatsApp</button>
     </div>
   </div>
@@ -579,30 +587,30 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:3.5rem 
   <footer>
     <div class="footer-inner">
       <div>
-        <div class="foot-logo">Food<span>lovers</span></div>
-        <p class="foot-tagline">THE BIGGEST RESTAURANT IN TAKORADI. Serving Local &amp; Continental dishes fresh every day.</p>
+        <div class="foot-logo">Afang <span>Uyo</span></div>
+        <p class="foot-tagline">Authentic South-South Nigerian cuisine in the heart of Abuja. Soups, food trays & event catering — made with love.</p>
         <div class="foot-socials" style="margin-top:1rem">
-          <a href="https://www.instagram.com/foodlovers_gh/" target="_blank">📸 Instagram</a>
-          <a href="https://www.facebook.com/p/Foodlovers-61577763337924/" target="_blank">👍 Facebook</a>
-          <a href="tel:+233503215601">📞 Call Us</a>
+          <a href="https://www.instagram.com/afang_uyo" target="_blank">📸 @afang_uyo</a>
+          <a href="https://www.threads.com/@afang_uyo" target="_blank">🧵 Threads</a>
+          <a href="tel:+2348060493317">📞 Call Us</a>
         </div>
       </div>
       <div class="foot-col">
         <h4>Find Us</h4>
-        <p>Takoradi Mall, Gate 2</p>
-        <p>12 Liberation Rd</p>
-        <p>Takoradi, Ghana</p>
-        <p style="margin-top:.5rem"><a href="https://maps.app.goo.gl/GVMJkjLNZow5VUmz8" target="_blank" style="color:var(--amber)">📍 View on Google Maps</a></p>
+        <p>Phase 5, Kurudu</p>
+        <p>Abuja, FCT</p>
+        <p>Nigeria</p>
+        <p style="margin-top:.5rem"><a href="https://maps.app.goo.gl/Rj396HvGvNeGvnnR9" target="_blank" style="color:var(--amber)">📍 View on Google Maps</a></p>
       </div>
       <div class="foot-col">
         <h4>Quick Links</h4>
         <a onclick="showPage('menu')">Our Menu</a>
         <a onclick="showPage('order')">Place an Order</a>
         <a onclick="openWhatsApp()">WhatsApp Order</a>
-        <a href="tel:+233503215601">Call: 0503215601</a>
+        <a href="tel:+2348060493317">Call: 08060493317</a>
       </div>
     </div>
-    <p class="foot-copy">© 2025 Foodlovers Takoradi. All rights reserved.</p>
+    <p class="foot-copy">© 2025 Afang Uyo Food. All rights reserved. · BN: 6968600</p>
   </footer>
 </div>
 
@@ -610,14 +618,14 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:3.5rem 
 <div id="menu" class="page">
   <div class="menu-hero">
     <h1>Our Full Menu</h1>
-    <p>Local & Continental — fresh, flavourful, made with love 🇬🇭</p>
+    <p>Authentic Akwa Ibom & South-South Nigerian cuisine — made from scratch, made with love 🫶🏾</p>
   </div>
 
   <div class="tabs">
     <button class="tab active" onclick="filterMenu('all',this)">All Items</button>
-    <button class="tab" onclick="filterMenu('local',this)">🍲 Local Dishes</button>
-    <button class="tab" onclick="filterMenu('continental',this)">🍕 Continental</button>
-    <button class="tab" onclick="filterMenu('sides',this)">🍟 Sides & Snacks</button>
+    <button class="tab" onclick="filterMenu('soups',this)">🍲 Soups & Stews</button>
+    <button class="tab" onclick="filterMenu('trays',this)">🍽 Trays & Packs</button>
+    <button class="tab" onclick="filterMenu('swallows',this)">🫕 Swallows</button>
     <button class="tab" onclick="filterMenu('drinks',this)">🥤 Drinks</button>
   </div>
 
@@ -626,22 +634,22 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:3.5rem 
   <footer>
     <div class="footer-inner">
       <div>
-        <div class="foot-logo">Food<span>lovers</span></div>
-        <p class="foot-tagline">📍 Takoradi Mall Gate 2 &nbsp;·&nbsp; 📞 +233 50 321 5601</p>
+        <div class="foot-logo">Afang <span>Uyo</span></div>
+        <p class="foot-tagline">📍 Phase 5, Kurudu, Abuja &nbsp;·&nbsp; 📞 08060493317</p>
       </div>
       <div class="foot-col">
         <h4>Order Now</h4>
         <a onclick="openWhatsApp()">💬 WhatsApp Order</a>
         <a onclick="showPage('order')">🛒 Online Order</a>
-        <a href="tel:+233503215601">📞 Call to Order</a>
+        <a href="tel:+2348060493317">📞 Call to Order</a>
       </div>
       <div class="foot-col">
         <h4>Follow Us</h4>
-        <a href="https://www.instagram.com/foodlovers_gh/" target="_blank">Instagram @foodlovers_gh</a>
-        <a href="https://www.facebook.com/p/Foodlovers-61577763337924/" target="_blank">Facebook</a>
+        <a href="https://www.instagram.com/afang_uyo" target="_blank">Instagram @afang_uyo</a>
+        <a href="https://www.threads.com/@afang_uyo" target="_blank">Threads @afang_uyo</a>
       </div>
     </div>
-    <p class="foot-copy">© 2025 Foodlovers Takoradi. All rights reserved.</p>
+    <p class="foot-copy">© 2025 Afang Uyo Food. All rights reserved.</p>
   </footer>
 </div>
 
@@ -653,7 +661,12 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:3.5rem 
     <div class="order-left">
       <div class="order-header">
         <h1>Place Your Order</h1>
-        <p>Add items and fill in your details — we'll confirm by phone.</p>
+        <p>Add items, fill in your details — we'll confirm by WhatsApp or phone.</p>
+      </div>
+
+      <div class="notice-bar">
+        <span>⏰</span>
+        <span><strong style="color:var(--amber)">Please note:</strong> Soups, Ekpang Nkukwo & Event Catering orders require <strong>24–48hrs advance notice</strong>. Lunch packs may be available same-day — confirm via WhatsApp.</span>
       </div>
 
       <div class="browse-link" onclick="showPage('menu')">
@@ -668,13 +681,13 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:3.5rem 
 
         <div class="f-row" id="f-row-name">
           <label for="f-name">Full Name *</label>
-          <input type="text" id="f-name" placeholder="e.g. Kwame Mensah" oninput="clearError('f-row-name')"/>
+          <input type="text" id="f-name" placeholder="e.g. Amaka Obi" oninput="clearError('f-row-name')"/>
           <p class="f-error-msg">Please enter your name.</p>
         </div>
 
         <div class="f-row" id="f-row-phone">
           <label for="f-phone">Phone Number *</label>
-          <input type="tel" id="f-phone" placeholder="e.g. 0201234567" oninput="clearError('f-row-phone')"/>
+          <input type="tel" id="f-phone" placeholder="e.g. 08012345678" oninput="clearError('f-row-phone')"/>
           <p class="f-error-msg">Please enter a valid phone number.</p>
         </div>
 
@@ -682,22 +695,21 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:3.5rem 
           <label for="f-type">How would you like to receive your order? *</label>
           <select id="f-type" onchange="toggleAddress()">
             <option value="">— Select an option —</option>
-            <option value="pickup">🏪 Pickup at Takoradi Mall Gate 2</option>
-            <option value="delivery">🚗 Delivery (Takoradi area)</option>
-            <option value="dine">🍽 Dine-in</option>
+            <option value="pickup">🏠 Pickup — Phase 5, Kurudu, Abuja</option>
+            <option value="delivery">🚗 Delivery (Abuja area)</option>
           </select>
           <p class="f-error-msg">Please select an option.</p>
         </div>
 
         <div class="f-row hidden" id="f-row-address">
           <label for="f-address">Delivery Address *</label>
-          <input type="text" id="f-address" placeholder="Street, area, nearest landmark..." oninput="clearError('f-row-address')"/>
+          <input type="text" id="f-address" placeholder="Street, estate, nearest landmark..." oninput="clearError('f-row-address')"/>
           <p class="f-error-msg">Please enter your delivery address.</p>
         </div>
 
         <div class="f-row">
           <label for="f-notes">Special Instructions <span style="color:var(--muted2);font-size:.75rem">(optional)</span></label>
-          <textarea id="f-notes" placeholder="Extra spice, no onions, specific proteins, etc..."></textarea>
+          <textarea id="f-notes" placeholder="Extra protein, no periwinkle, event date, number of guests etc..."></textarea>
         </div>
 
         <div class="order-btns">
@@ -720,9 +732,9 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:3.5rem 
         </div>
       </div>
       <div class="cart-totals" id="cart-totals" style="display:none">
-        <div class="total-row"><span>Subtotal</span><span id="subtotal">GH₵ 0.00</span></div>
+        <div class="total-row"><span>Subtotal</span><span id="subtotal">₦0</span></div>
         <div class="total-row"><span>Delivery fee</span><span>Confirmed on call</span></div>
-        <div class="total-row grand"><span>Total</span><span id="grand-total">GH₵ 0.00</span></div>
+        <div class="total-row grand"><span>Total</span><span id="grand-total">₦0</span></div>
         <button class="clear-btn" onclick="clearCart()">🗑 Clear cart</button>
       </div>
     </div>
@@ -739,7 +751,7 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:3.5rem 
     <div class="modal-icon">🎉</div>
     <h2>Order Received!</h2>
     <div class="order-ref" id="order-ref">ORD-000</div>
-    <p id="modal-msg">Thanks! We'll call you shortly to confirm and give you an estimated time.<br><br>Questions? Call us on <strong style="color:var(--amber)">+233 50 321 5601</strong></p>
+    <p id="modal-msg">We got your order and will confirm shortly via WhatsApp or phone.<br><br>Questions? Call or WhatsApp us on <strong style="color:var(--amber)">07072159081</strong></p>
     <button class="modal-wa" onclick="openWhatsApp();closeModal()">💬 Follow up on WhatsApp</button>
     <button class="modal-close" onclick="closeModal()">Back to Home</button>
   </div>
@@ -748,49 +760,66 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:3.5rem 
 <script>
 // ═══════════════ DATA ═══════════════
 const MENU = [
-  // LOCAL
-  {id:'waakye',    cat:'local', name:'Waakye',                  price:45,  emoji:'🍚', desc:'Rice & beans with spaghetti, wele, egg & stew. Fridays only.',
+  // SOUPS
+  {id:'afang',    cat:'soups', name:'Afang Soup',           price:5000, emoji:'🍲',
+   desc:'Signature wild Okazi leaves & waterleaf with periwinkles, assorted meats, crayfish & palm oil.',
+   img:'https://images.unsplash.com/photo-1547592180-85f173990554?w=300&q=70'},
+  {id:'edikang',  cat:'soups', name:'Edikang Ikong',        price:5000, emoji:'🥬',
+   desc:'The "soup of the rich" — ugu & waterleaf with assorted meats, fish, periwinkles & crayfish.',
+   img:'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=300&q=70'},
+  {id:'banga',    cat:'soups', name:'Banga Soup',           price:4500, emoji:'🫙',
+   desc:'Rich palm-nut extract with ofo seed, dried fish, fresh fish & aromatic Akwa Ibom spices.',
+   img:'https://images.unsplash.com/photo-1547592180-85f173990554?w=300&q=70'},
+  {id:'whitesoup',cat:'soups', name:'Afia Efere (White Soup)',price:4500,emoji:'🍵',
+   desc:'Delicate, pepper-infused broth with fresh fish, goat meat & aromatic herbs. Pure comfort.',
+   img:'https://images.unsplash.com/photo-1547592180-85f173990554?w=300&q=70'},
+  {id:'ekpang',   cat:'soups', name:'Ekpang Nkukwo',        price:6000, emoji:'🫕',
+   desc:'Grated cocoyam wrapped in cocoyam leaves, packed with periwinkles, fish & palm oil. Signature dish. 24hr notice.',
    img:'https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=300&q=70'},
-  {id:'goatjollof',cat:'local', name:'Goat Jollof Rice',         price:65,  emoji:'🍲', desc:'Smoky party jollof with tender goat meat & plantain.',
-   img:'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=300&q=70'},
-  {id:'banku',     cat:'local', name:'Banku & Okro Stew',         price:50,  emoji:'🫕', desc:'Oilless okro stew with assorted protein — a Foodlovers classic.',
-   img:'https://images.unsplash.com/photo-1547592180-85f173990554?w=300&q=70'},
-  {id:'omotuo',    cat:'local', name:'Omo Tuo & Groundnut Soup',  price:55,  emoji:'🥣', desc:'Rich groundnut soup with soft rice balls. Weekends only.',
-   img:'https://images.unsplash.com/photo-1547592180-85f173990554?w=300&q=70'},
-  {id:'checkcheck',cat:'local', name:'Cheke Cheke',               price:50,  emoji:'🍛', desc:'A Takoradi favourite — spiced & hearty, straight from the fire.',
-   img:'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=300&q=70'},
-  {id:'jollof',    cat:'local', name:'Jollof Rice',               price:40,  emoji:'🍛', desc:'Classic well-seasoned jollof. Choose your protein at the counter.',
-   img:'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=300&q=70'},
-  // CONTINENTAL
-  {id:'pizza',     cat:'continental', name:'Pizza (Regular)',      price:50,  emoji:'🍕', desc:'Freshly baked pizza, loaded with toppings.',
-   img:'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=300&q=70'},
-  {id:'shawarma',  cat:'continental', name:'Shawarma',              price:55,  emoji:'🌯', desc:'Grilled meat, veg & sauce wrapped in soft flatbread.',
-   img:'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=300&q=70'},
-  {id:'burger',    cat:'continental', name:'Juicy Burger',          price:55,  emoji:'🍔', desc:'Double patty with lettuce, tomato & our house sauce.',
-   img:'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&q=70'},
-  {id:'wings',     cat:'continental', name:'Chicken Wings',         price:65,  emoji:'🍗', desc:'Golden crispy wings. Mild or spicy — your call.',
-   img:'https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=300&q=70'},
-  // SIDES
-  {id:'fries',     cat:'sides', name:'Loaded Fries',               price:60,  emoji:'🍟', desc:'Cheesy loaded fries — the most talked-about side in Takoradi.',
-   img:'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=300&q=70'},
-  {id:'chips',     cat:'sides', name:'Plain Fries',                 price:30,  emoji:'🍟', desc:'Golden, crispy, lightly seasoned.',
-   img:'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=300&q=70'},
-  {id:'sausage',   cat:'sides', name:'Sausage & Fries',             price:40,  emoji:'🌭', desc:'Grilled sausage alongside a portion of crispy fries.',
+  // TRAYS & PACKS
+  {id:'premiumtray',cat:'trays', name:'Premium Food Tray', price:12000, emoji:'🍽',
+   desc:'Full meal tray — soup of choice, swallow, choice protein & sides. Perfect for events & offices.',
    img:'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=300&q=70'},
+  {id:'lunchpack1', cat:'trays', name:'Jollof Rice Lunch Pack', price:3500, emoji:'🍛',
+   desc:'Smoky party-style jollof rice with grilled chicken, coleslaw & chilled drink.',
+   img:'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=300&q=70'},
+  {id:'lunchpack2', cat:'trays', name:'Fried Rice Lunch Pack',  price:4000, emoji:'🍳',
+   desc:'Golden fried rice with assorted protein, stir-fried vegetables & coleslaw.',
+   img:'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=300&q=70'},
+  {id:'ricepack',   cat:'trays', name:'Rice & Stew Pack',       price:3000, emoji:'🍅',
+   desc:'Classic white rice, rich tomato stew & your choice of chicken or beef.',
+   img:'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=300&q=70'},
+  // SWALLOWS
+  {id:'poundedyam', cat:'swallows', name:'Pounded Yam',   price:800,  emoji:'🍚',
+   desc:'Smooth, stretchy pounded yam. Pairs perfectly with any of our soups.',
+   img:'https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=300&q=70'},
+  {id:'fufu',       cat:'swallows', name:'Fufu',          price:600,  emoji:'⚪',
+   desc:'Soft cassava fufu — light and smooth, ideal with Afang or Banga soup.',
+   img:'https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=300&q=70'},
+  {id:'eba',        cat:'swallows', name:'Eba (Garri)',   price:500,  emoji:'🟡',
+   desc:'Firm, golden garri — the classic everyday swallow.',
+   img:'https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=300&q=70'},
+  {id:'semovita',   cat:'swallows', name:'Semovita',      price:600,  emoji:'🤍',
+   desc:'Light, lump-free semovita. Great with any soup on the menu.',
+   img:'https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=300&q=70'},
   // DRINKS
-  {id:'sobolo',    cat:'drinks', name:'Sobolo (Zobo)',               price:15,  emoji:'🥤', desc:'Chilled hibiscus drink, lightly spiced. A Ghanaian staple.',
+  {id:'zobo',   cat:'drinks', name:'Zobo (Hibiscus)',  price:800,  emoji:'🥤',
+   desc:'Chilled homemade hibiscus drink — lightly spiced, refreshingly sweet.',
    img:'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&q=70'},
-  {id:'malt',      cat:'drinks', name:'Malta Guinness',              price:12,  emoji:'🍺', desc:'Rich, smooth malt — cold and refreshing.',
+  {id:'kunu',   cat:'drinks', name:'Kunu',             price:700,  emoji:'🫗',
+   desc:'Chilled millet drink, lightly spiced & naturally sweetened.',
+   img:'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&q=70'},
+  {id:'malt',   cat:'drinks', name:'Malt Drink',       price:600,  emoji:'🍺',
+   desc:'Cold, rich Malta Guinness — smooth and refreshing.',
    img:'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=300&q=70'},
-  {id:'juice',     cat:'drinks', name:'Fresh Juice',                 price:20,  emoji:'🧃', desc:'Seasonal fresh fruit juice made to order.',
-   img:'https://images.unsplash.com/photo-1546171753-97d7676e4602?w=300&q=70'},
-  {id:'water',     cat:'drinks', name:'Bottled Water',               price:5,   emoji:'💧', desc:'500ml chilled water.',
+  {id:'water',  cat:'drinks', name:'Bottled Water',    price:300,  emoji:'💧',
+   desc:'500ml chilled water.',
    img:'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=300&q=70'},
 ];
 
-const FEATURED_IDS = ['goatjollof','wings','shawarma','fries','waakye','pizza'];
-const QUICK_IDS    = ['goatjollof','pizza','shawarma','fries','wings','banku'];
-const CAT_LABELS   = {local:'🍲 Local Dishes',continental:'🍕 Continental',sides:'🍟 Sides & Snacks',drinks:'🥤 Drinks'};
+const FEATURED_IDS = ['afang','ekpang','premiumtray','edikang','banga','lunchpack1'];
+const QUICK_IDS    = ['afang','ekpang','premiumtray','edikang','poundedyam','lunchpack1'];
+const CAT_LABELS   = {soups:'🍲 Soups & Stews', trays:'🍽 Food Trays & Lunch Packs', swallows:'🫕 Swallows', drinks:'🥤 Drinks'};
 let cart = [];
 
 // ═══════════════ NAVIGATION ═══════════════
@@ -841,10 +870,10 @@ function clearCart() {
 
 function cartCount() { return cart.reduce((a,c)=>a+c.qty, 0); }
 function cartTotal() { return cart.reduce((a,c)=>a+c.price*c.qty, 0); }
+function fmt(v) { return '₦'+Math.round(v).toLocaleString(); }
 
 function renderCart() {
   const n = cartCount(), total = cartTotal();
-  const fmt = v => 'GH₵ '+v.toFixed(2);
 
   // nav count
   const cc = document.getElementById('cart-count');
@@ -876,7 +905,7 @@ function renderCart() {
       <span class="cart-line-emoji">${item.emoji}</span>
       <div class="cart-line-info">
         <h5>${item.name}</h5>
-        <small>GH₵ ${item.price} each</small>
+        <small>${fmt(item.price)} each</small>
       </div>
       <div class="qty-ctrl">
         <button class="qty-btn" onclick="changeQty('${item.id}',-1)">−</button>
@@ -913,7 +942,8 @@ const featGrid = document.getElementById('feat-grid');
 FEATURED_IDS.forEach(id=>{
   const item = MENU.find(m=>m.id===id);
   if(!item) return;
-  const catTag = item.cat==='local'?'Local 🇬🇭':item.cat==='continental'?'Continental':'Side';
+  const catMap = {soups:'Soup 🍲', trays:'Tray/Pack 🍽', swallows:'Swallow 🫕', drinks:'Drink 🥤'};
+  const catTag = catMap[item.cat] || item.cat;
   featGrid.innerHTML += `
     <div class="feat-card">
       <div class="feat-img" style="background-image:url('${item.img}')">
@@ -923,7 +953,7 @@ FEATURED_IDS.forEach(id=>{
         <h3>${item.emoji} ${item.name}</h3>
         <p>${item.desc}</p>
         <div class="feat-footer">
-          <span class="feat-price">GH₵ ${item.price}</span>
+          <span class="feat-price">${fmt(item.price)}</span>
           <button class="add-btn" id="feat-add-${item.id}"
             onclick="handleFeatAdd('${item.id}','${item.name}',${item.price},'${item.emoji}',this)">+</button>
         </div>
@@ -940,7 +970,7 @@ function handleFeatAdd(id, name, price, emoji, btn) {
 
 // ═══════════════ MENU PAGE ═══════════════
 function buildMenu(filter) {
-  const cats = filter==='all' ? ['local','continental','sides','drinks'] : [filter];
+  const cats = filter==='all' ? ['soups','trays','swallows','drinks'] : [filter];
   document.getElementById('menu-sections').innerHTML = cats.map(cat=>{
     const items = MENU.filter(m=>m.cat===cat);
     if(!items.length) return '';
@@ -955,7 +985,7 @@ function buildMenu(filter) {
               <p>${item.desc}</p>
             </div>
             <div class="menu-right">
-              <span class="menu-price">GH₵ ${item.price}</span>
+              <span class="menu-price">${fmt(item.price)}</span>
               <button class="menu-add-btn" id="madd-${item.id}"
                 onclick="handleMenuAdd('${item.id}','${item.name}',${item.price},'${item.emoji}',this)">+ Add</button>
             </div>
@@ -990,7 +1020,7 @@ QUICK_IDS.forEach(id=>{
       <div class="quick-chip-img" style="background-image:url('${item.img}')"></div>
       <div class="quick-chip-info">
         <h5>${item.emoji} ${item.name}</h5>
-        <span>GH₵ ${item.price}</span>
+        <span>${fmt(item.price)}</span>
       </div>
       <button class="quick-chip-add" id="qadd-${item.id}"
         onclick="handleQuickAdd('${item.id}','${item.name}',${item.price},'${item.emoji}',this)">+</button>
@@ -1024,22 +1054,22 @@ function clearError(rowId) {
 
 // ═══════════════ WHATSAPP ═══════════════
 function buildWhatsAppMsg(name, phone, type, address, notes) {
-  const typeLabel = {pickup:'Pickup at Takoradi Mall Gate 2', delivery:'Delivery', dine:'Dine-in'}[type] || type;
-  let msg = `🍽 *New Order — Foodlovers Takoradi*\n\n`;
+  const typeLabel = {pickup:'Pickup — Phase 5, Kurudu, Abuja', delivery:'Delivery'}[type] || type;
+  let msg = `🍲 *New Order — Afang Uyo Food*\n\n`;
   msg += `*Name:* ${name}\n*Phone:* ${phone}\n*Order Type:* ${typeLabel}\n`;
-  if(type==='delivery' && address) msg += `*Address:* ${address}\n`;
+  if(type==='delivery' && address) msg += `*Delivery Address:* ${address}\n`;
   msg += `\n*Items Ordered:*\n`;
   cart.forEach(c=>{
-    msg += `${c.emoji} ${c.name} x${c.qty} — GH₵ ${(c.price*c.qty).toFixed(2)}\n`;
+    msg += `${c.emoji} ${c.name} x${c.qty} — ${fmt(c.price*c.qty)}\n`;
   });
-  msg += `\n*Total: GH₵ ${cartTotal().toFixed(2)}*`;
+  msg += `\n*Total: ${fmt(cartTotal())}*`;
   if(notes) msg += `\n\n*Notes:* ${notes}`;
   return encodeURIComponent(msg);
 }
 
 function openWhatsApp(msg) {
-  const phone = '233503215601';
-  const text  = msg || encodeURIComponent("Hi Foodlovers! I'd like to place an order 😊");
+  const phone = '2347072159081';
+  const text  = msg || encodeURIComponent("Hi Afang Uyo! I'd like to place an order 🍲");
   window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
 }
 
@@ -1069,11 +1099,11 @@ function placeOrder(method) {
 }
 
 function showSuccessModal(name, isWa) {
-  const ref = 'FL-' + Date.now().toString().slice(-5);
+  const ref = 'AU-' + Date.now().toString().slice(-5);
   document.getElementById('order-ref').textContent = ref;
   document.getElementById('modal-msg').innerHTML = isWa
     ? `Your order has been sent to our WhatsApp! We'll reply to confirm shortly.<br><br>Reference: <strong style="color:var(--amber)">${ref}</strong>`
-    : `Thanks, <strong>${name}</strong>! We got your order and will call you on <strong>${document.getElementById('f-phone').value}</strong> to confirm.<br><br>Reference: <strong style="color:var(--amber)">${ref}</strong>`;
+    : `Thanks, <strong>${name}</strong>! We got your order and will reach you on <strong>${document.getElementById('f-phone').value}</strong> to confirm.<br><br>Reference: <strong style="color:var(--amber)">${ref}</strong>`;
   document.getElementById('modal-overlay').classList.add('open');
 }
 
